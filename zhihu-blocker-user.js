@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         知乎屏蔽用户评论
-// @namespace    Shurlormes
-// @version      0.9
+// @namespace    jasonz3157
+// @version      0.10
 // @description  知乎屏蔽指定用户，将他的评论和回答隐藏。
-// @author       Shurlormes
+// @author       jasonz3157
 // @match        *://*.zhihu.com/*
 // @icon         https://static.zhihu.com/heifetz/favicon.ico
 // @grant        GM_addStyle
@@ -11,7 +11,7 @@
 // @grant        GM_unregisterMenuCommand
 // @grant        GM_xmlhttpRequest
 // @license      GPL-3.0
-// @downloadURL  https://github.com/jasonz3157/zhihu-blocker
+// @downloadURL  https://github.com/jasonz3157/zhihu-blocker/raw/refs/heads/master/zhihu-blocker-user.js
 // ==/UserScript==
 
 (function () {
