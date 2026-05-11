@@ -12,6 +12,7 @@
 // @grant        GM_xmlhttpRequest
 // @license      GPL-3.0
 // @downloadURL  https://github.com/jasonz3157/zhihu-blocker/raw/refs/heads/master/zhihu-blocker-user.js
+// @updateURL    https://github.com/jasonz3157/zhihu-blocker/raw/refs/heads/master/zhihu-blocker-user.js
 // ==/UserScript==
 
 (function () {
