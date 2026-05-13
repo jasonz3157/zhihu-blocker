@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         GitHub 时间 Tooltip ISO 8601
+// @name         GitHub 时间 Tooltip ISO
 // @namespace    my-violentmonkey-scripts
-// @version      0.1.1
-// @description  将 GitHub 页面时间元素 tooltip 中的日期时间改为 ISO 8601 格式。
+// @version      0.1.2
+// @description  将 GitHub 页面时间元素 tooltip 中的日期时间改为 ISO 格式。
 // @author       jasonz3157
 // @match        https://github.com/*
 // @icon         https://github.githubassets.com/favicons/favicon.svg
