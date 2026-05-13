@@ -9,6 +9,8 @@
 // @grant        none
 // @run-at       document-start
 // @license      GPL-3.0
+// @downloadURL  https://raw.githubusercontent.com/jasonz3157/my-violentmonkey-scripts/refs/heads/master/github-iso-time-tooltip.js
+// @updateURL    https://raw.githubusercontent.com/jasonz3157/my-violentmonkey-scripts/refs/heads/master/github-iso-time-tooltip.js
 // ==/UserScript==
 
 (function () {
