@@ -43,10 +43,6 @@
     return String(value).padStart(2, '0');
   }
 
-  function pad3(value) {
-    return String(value).padStart(3, '0');
-  }
-
   function isValidDate(date) {
     return date instanceof Date && !Number.isNaN(date.getTime());
   }
@@ -87,22 +83,20 @@
     return null;
   }
 
-  function formatLocalIso8601(date) {
+  function formatLocalDateTime(date) {
     const year = date.getFullYear();
     const month = pad2(date.getMonth() + 1);
     const day = pad2(date.getDate());
     const hour = pad2(date.getHours());
     const minute = pad2(date.getMinutes());
     const second = pad2(date.getSeconds());
-    const millisecond = date.getMilliseconds();
     const offsetMinutes = -date.getTimezoneOffset();
     const offsetSign = offsetMinutes >= 0 ? '+' : '-';
     const absOffsetMinutes = Math.abs(offsetMinutes);
     const offsetHour = pad2(Math.floor(absOffsetMinutes / 60));
     const offsetMinute = pad2(absOffsetMinutes % 60);
-    const millisecondsPart = millisecond === 0 ? '' : `.${pad3(millisecond)}`;
 
-    return `${year}-${month}-${day}T${hour}:${minute}:${second}${millisecondsPart}${offsetSign}${offsetHour}:${offsetMinute}`;
+    return `${year}-${month}-${day} ${hour}:${minute}:${second} ${offsetSign}${offsetHour}:${offsetMinute}`;
   }
 
   function setAttrIfChanged(element, attrName, value) {
@@ -122,14 +116,14 @@
       return;
     }
 
-    const isoDateTime = formatLocalIso8601(date);
+    const formattedDateTime = formatLocalDateTime(date);
 
     // GitHub 的原生 title tooltip 是主要目标；其他属性只在原本存在时同步改写。
-    setAttrIfChanged(element, 'title', isoDateTime);
+    setAttrIfChanged(element, 'title', formattedDateTime);
 
     for (const attrName of TOOLTIP_ATTRS) {
       if (attrName !== 'title' && element.hasAttribute(attrName)) {
-        setAttrIfChanged(element, attrName, isoDateTime);
+        setAttrIfChanged(element, attrName, formattedDateTime);
       }
     }
   }
