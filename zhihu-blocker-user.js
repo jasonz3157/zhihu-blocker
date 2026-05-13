@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         知乎屏蔽用户评论
 // @namespace    jasonz3157
-// @version      0.10
+// @version      0.11
 // @description  知乎屏蔽指定用户，将他的评论和回答隐藏。
 // @author       jasonz3157
 // @match        *://*.zhihu.com/*
@@ -11,8 +11,8 @@
 // @grant        GM_unregisterMenuCommand
 // @grant        GM_xmlhttpRequest
 // @license      GPL-3.0
-// @downloadURL  https://github.com/jasonz3157/zhihu-blocker/raw/refs/heads/master/zhihu-blocker-user.js
-// @updateURL    https://github.com/jasonz3157/zhihu-blocker/raw/refs/heads/master/zhihu-blocker-user.js
+// @downloadURL  https://github.com/jasonz3157/my-violentmonkey-scripts/raw/refs/heads/master/zhihu-blocker-user.js
+// @updateURL    https://github.com/jasonz3157/my-violentmonkey-scripts/raw/refs/heads/master/zhihu-blocker-user.js
 // ==/UserScript==
 
 (function () {
