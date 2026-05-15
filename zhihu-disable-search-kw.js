@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         zhihu-disable-search-kw
 // @namespace    https://zhihu.com/
-// @version      1.0.1
+// @version      1.0.2
 // @description  将知乎正文中的搜索高亮词和 SVG 图标还原为普通文本
 // @match        *://*.zhihu.com/*
 // @run-at       document-idle
@@ -61,27 +61,37 @@
     // 首次处理
     toPlainText();
 
+    function scheduleFullScan() {
+        if (scheduleFullScan.timer) return;
+
+        scheduleFullScan.timer = setTimeout(() => {
+            scheduleFullScan.timer = null;
+            toPlainText();
+        }, 300);
+    }
+    scheduleFullScan.timer = null;
+
     // 知乎是动态加载页面，需要监听新增内容
-    let timer = null;
     const observer = new MutationObserver((mutations) => {
-        clearTimeout(timer);
+        for (const mutation of mutations) {
+            if (
+                mutation.type === 'attributes' &&
+                mutation.target.nodeType === Node.ELEMENT_NODE
+            ) {
+                toPlainText(mutation.target);
+            }
 
-        timer = setTimeout(() => {
-            for (const mutation of mutations) {
+            for (const node of mutation.addedNodes) {
                 if (
-                    mutation.type === 'attributes' &&
-                    mutation.target.nodeType === Node.ELEMENT_NODE
+                    node.nodeType === Node.ELEMENT_NODE ||
+                    node.nodeType === Node.DOCUMENT_FRAGMENT_NODE
                 ) {
-                    toPlainText(mutation.target);
-                }
-
-                for (const node of mutation.addedNodes) {
-                    if (node.nodeType === Node.ELEMENT_NODE) {
-                        toPlainText(node);
-                    }
+                    toPlainText(node);
                 }
             }
-        }, 100);
+        }
+
+        scheduleFullScan();
     });
 
     observer.observe(document.documentElement, {
